@@ -1,10 +1,12 @@
-# PHP library to interact with Supabase API.
+# A minimal PHP implementation of the [Supabase API]
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/juanbenitez/supabase-api.svg?style=flat-square)](https://packagist.org/packages/juanbenitez/supabase-api)
 [![Tests](https://github.com/juanbenitez/supabase-api/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/juanbenitez/supabase-api/actions/workflows/run-tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/juanbenitez/supabase-api.svg?style=flat-square)](https://packagist.org/packages/juanbenitez/supabase-api)
 
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
+This is a minimal PHP implementation of the [Supabase API](https://supabase.com/docs/guides/api) wich is supported by [PostgREST](https://postgrest.org/en/stable/index.html). It contains only the methods I needed. I'm open however to PRs that add extra methods to the client.
+
+Here are a few examples on how you can use the package:
 
 ## Installation
 

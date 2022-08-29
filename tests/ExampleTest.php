@@ -1,5 +1,11 @@
 <?php
+namespace Juanbenitez\SupabaseApi\Tests;
 
-it('can test', function () {
-    expect(true)->toBeTrue();
-});
+class ExampleTest extends TestCase
+{
+    /** @test */
+    public function canTest()
+    {
+        $this->assertTrue(true);
+    }
+}
