@@ -1,4 +1,5 @@
 <?php
+
 namespace Juanbenitez\SupabaseApi\Request;
 
 use Juanbenitez\SupabaseApi\Connector\SupabaseConnector;
@@ -15,11 +16,12 @@ class SupabaseRequest extends SaloonRequest
         return $this->getEndpointFromTable();
     }
 
-    public function getEndpointFromTable(): string 
+    public function getEndpointFromTable(): string
     {
-        if(!$this->table){
+        if (! $this->table) {
             throw new \Exception('Table not defined.');
         }
+
         return "/{$this->table}";
     }
 
@@ -28,9 +30,8 @@ class SupabaseRequest extends SaloonRequest
         $this->table = $tableName;
     }
 
-    public function getTable():string
+    public function getTable(): string
     {
         return $this->table;
     }
-
 }

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Juanbenitez\SupabaseApi\Tests\Request;
 
@@ -9,11 +11,10 @@ class RequestsLimitTest extends TestCase
     /** @test */
     public function canCreateReadRowsRequestWithLimit()
     {
-        
         $this->readRows->limit(10);
 
         $queryParams = $this->readRows->getQuery();
-        
+
         $this->assertArrayHasKey('limit', $queryParams);
         $this->assertEquals($queryParams['limit'], 10);
     }
@@ -24,7 +25,7 @@ class RequestsLimitTest extends TestCase
         $this->readRows->limit(100, 20);
 
         $queryParams = $this->readRows->getQuery();
-        
+
         $this->assertArrayHasKey('limit', $queryParams);
         $this->assertArrayHasKey('offset', $queryParams);
         $this->assertEquals($queryParams['limit'], 100);

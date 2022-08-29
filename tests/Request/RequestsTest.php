@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Juanbenitez\SupabaseApi\Tests\Request;
 
@@ -34,5 +36,4 @@ class RequestsTest extends TestCase
         $this->assertArrayHasKey('select', $queryParams);
         $this->assertEquals($queryParams['select'], 'field_1,field_2');
     }
-   
 }

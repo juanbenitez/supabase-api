@@ -1,4 +1,5 @@
 <?php
+
 namespace Juanbenitez\SupabaseApi\Tests;
 
 class ExampleTest extends TestCase
