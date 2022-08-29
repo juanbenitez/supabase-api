@@ -8,10 +8,10 @@ trait CanLimit
     {
         $this->addQuery('limit', $limit);
 
-        if(!is_null($offset)){
+        if (! is_null($offset)) {
             $this->addQuery('offset', $offset);
         }
 
         return $this;
-    }    
+    }
 }

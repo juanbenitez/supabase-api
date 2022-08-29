@@ -1,8 +1,9 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Juanbenitez\SupabaseApi\Tests\Request;
 
-use Juanbenitez\SupabaseApi\Request\ReadRowsRequest;
 use Juanbenitez\SupabaseApi\Tests\TestCase;
 
 class RequestsFilterTest extends TestCase
@@ -10,7 +11,7 @@ class RequestsFilterTest extends TestCase
     /** @test */
     public function canCreateReadRowsRequestWithDefaultEqualFilter()
     {
-        $this->readRows->where(column: 'field_1', value: 'VALUE' );
+        $this->readRows->where(column: 'field_1', value: 'VALUE');
 
         $queryParams = $this->readRows->getQuery();
 
@@ -22,7 +23,7 @@ class RequestsFilterTest extends TestCase
     public function canCreateReadRowsRequestWithNotDefaultFilter()
     {
         $this->readRows->where(
-            column: 'field_1', 
+            column: 'field_1',
             operator: 'like',
             value: 'VALUE'
         );
@@ -40,7 +41,7 @@ class RequestsFilterTest extends TestCase
         $this->expectExceptionMessage('Invalid operator in where clause.');
 
         $this->readRows->where(
-            column: 'field_1', 
+            column: 'field_1',
             operator: 'notvalidfilter',
             value: 'VALUE'
         );

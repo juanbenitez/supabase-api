@@ -10,19 +10,19 @@ trait CanOrder
 
     protected function order(string $column, string $direction = 'asc', string $nullsOrder = '')
     {
-        if(!in_array($direction, ['asc', 'desc'])){
+        if (! in_array($direction, ['asc', 'desc'])) {
             throw new Exception('Invalid order direction in where clause.');
         }
-        
+
         $resultOrderQuery = [$column, $direction];
 
-        if(!empty($nullsOrder && in_array($nullsOrder, ['nullsfirst', 'nullslast']))){
+        if (! empty($nullsOrder && in_array($nullsOrder, ['nullsfirst', 'nullslast']))) {
             $resultOrderQuery[] = $nullsOrder;
         }
 
         $this->orders[] = implode('.', $resultOrderQuery);
     }
-    
+
     public function orderBy(string $column, string $direction = 'asc', string $nullsOrder = ''): static
     {
         $this->order($column, $direction, $nullsOrder);

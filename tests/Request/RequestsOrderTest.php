@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Juanbenitez\SupabaseApi\Tests\Request;
 
@@ -14,7 +16,7 @@ class RequestsOrderTest extends TestCase
         );
 
         $queryParams = $this->readRows->getQuery();
-        
+
         $this->assertArrayHasKey('order', $queryParams);
         $this->assertEquals($queryParams['order'], 'field_1.asc');
     }
@@ -28,7 +30,7 @@ class RequestsOrderTest extends TestCase
         );
 
         $queryParams = $this->readRows->getQuery();
-        
+
         $this->assertArrayHasKey('order', $queryParams);
         $this->assertEquals($queryParams['order'], 'field_1.desc');
     }
@@ -43,7 +45,7 @@ class RequestsOrderTest extends TestCase
         );
 
         $queryParams = $this->readRows->getQuery();
-        
+
         $this->assertArrayHasKey('order', $queryParams);
         $this->assertEquals($queryParams['order'], 'field_1.desc.nullsfirst');
     }
@@ -76,9 +78,9 @@ class RequestsOrderTest extends TestCase
                 column: 'field_3',
                 nullsOrder: 'nullslast',
             );
-        
+
         $queryParams = $this->readRows->getQuery();
-        
+
         $this->assertArrayHasKey('order', $queryParams);
         $this->assertEquals($queryParams['order'], 'field_1.asc,field_2.desc,field_3.asc.nullslast');
     }
