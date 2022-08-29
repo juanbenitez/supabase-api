@@ -1,16 +1,16 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "juanbenitez/supabase-api",
+    "description": "PHP library to interact with Supabase API.",
     "keywords": [
-        ":vendor_name",
-        ":package_slug"
+        "juanbenitez",
+        "supabase-api"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/juanbenitez/supabase-api",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Juan Benitez",
+            "email": "juan.angel.benitez@gmail.com",
             "role": "Developer"
         }
     ],
@@ -24,12 +24,12 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src"
+            "Juanbenitez\\SupabaseApi\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Juanbenitez\\SupabaseApi\\Tests\\": "tests"
         }
     },
     "scripts": {
