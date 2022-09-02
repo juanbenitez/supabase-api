@@ -60,4 +60,18 @@ class RequestsFilterTest extends TestCase
         $this->assertArrayHasKey('field_1', $queryParams);
         $this->assertEquals($queryParams['field_1'], 'eq.null');
     }
+
+    /** @test */
+    public function canCreateReadRowsRequestIlikeFilter()
+    {
+        $this->readRows->ilike(
+            column: 'field_1',
+            value: 'my-value'
+        );
+
+        $queryParams = $this->readRows->getQuery();
+
+        $this->assertArrayHasKey('field_1', $queryParams);
+        $this->assertEquals($queryParams['field_1'], 'ilike.*my-value*');
+    }
 }
