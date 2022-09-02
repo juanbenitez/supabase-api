@@ -30,6 +30,7 @@ trait CanFilter
     public function ilike(string $column, $value)
     {
         $value = '*'.$value.'*';
+
         return $this->where($column, $value, 'ilike');
     }
 }
