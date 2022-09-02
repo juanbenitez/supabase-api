@@ -1,10 +1,12 @@
-# A minimal PHP implementation of the Supabase API
+# A minimal PHP implementation of the Supabase API (WIP)
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/juanbenitez/supabase-api.svg?style=flat-square)](https://packagist.org/packages/juanbenitez/supabase-api)
 [![Tests](https://github.com/juanbenitez/supabase-api/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/juanbenitez/supabase-api/actions/workflows/run-tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/juanbenitez/supabase-api.svg?style=flat-square)](https://packagist.org/packages/juanbenitez/supabase-api)
 
 This is a minimal PHP implementation of the [Supabase API](https://supabase.com/docs/guides/api) wich is supported by [PostgREST](https://postgrest.org/en/stable/index.html). It contains only the methods I needed. However, I'm open to PRs that add extra methods to the client.
+
+__Be aware that is a work in progress, it's in pre-alpha state, use it at your own risk.__
 
 Here are a few examples on how you can use the package:
 
