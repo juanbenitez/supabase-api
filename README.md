@@ -6,6 +6,8 @@
 
 This is a minimal PHP implementation of the [Supabase API](https://supabase.com/docs/guides/api) wich is supported by [PostgREST](https://postgrest.org/en/stable/index.html). It contains only the methods I needed. However, I'm open to PRs that add extra methods to the client.
 
+Supabase-api is built with help of the awesome [Saloon](https://docs.saloon.dev/) package.
+
 __Be aware that is a work in progress, it's in pre-alpha state, use it at your own risk.__
 
 Here are a few examples on how you can use the package:
