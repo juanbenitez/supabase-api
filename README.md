@@ -32,15 +32,15 @@ class UsersReadRowsRequest extends ReadRowsRequest
 ```
 
 ```php
-$connector = new SupabaseConnector('https://testbaseurl.supabase.co/rest/v1/', 'TEST_SUPABASE_SERVICE_KEY');
-$users     = $this->connector->request(new UsersReadRowsRequest());
+$connector    = new SupabaseConnector('https://testbaseurl.supabase.co/rest/v1/', 'TEST_SUPABASE_SERVICE_KEY');
+$usersRequest = $connector->request(new UsersReadRowsRequest());
 
-$users->select(['last_name', 'first_name', 'age'])
-      ->where('age', '18')
-      ->orderBy('created_at', 'desc')
-      ->limit(5);
+$usersRequest->select(['last_name', 'first_name', 'age'])
+            ->where('age', '18')
+            ->orderBy('created_at', 'desc')
+            ->limit(5);
 
-$response = $users->send();
+$response = $usersRequest->send();
 $response->throw();
 
 echo "status:". $response->status() . PHP_EOL;
