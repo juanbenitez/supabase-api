@@ -82,9 +82,9 @@ class RequestsFilterTest extends TestCase
              column: 'field_1',
              value: 'my-value'
          );
- 
+
          $queryParams = $this->readRows->getQuery();
- 
+
          $this->assertArrayHasKey('field_1', $queryParams);
          $this->assertEquals($queryParams['field_1'], 'not.eq.my-value');
      }
