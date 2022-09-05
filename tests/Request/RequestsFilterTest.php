@@ -74,4 +74,18 @@ class RequestsFilterTest extends TestCase
         $this->assertArrayHasKey('field_1', $queryParams);
         $this->assertEquals($queryParams['field_1'], 'ilike.*my-value*');
     }
+
+     /** @test */
+     public function canCreateReadRowsRequestNotEqualFilter()
+     {
+         $this->readRows->neq(
+             column: 'field_1',
+             value: 'my-value'
+         );
+ 
+         $queryParams = $this->readRows->getQuery();
+ 
+         $this->assertArrayHasKey('field_1', $queryParams);
+         $this->assertEquals($queryParams['field_1'], 'not.eq.my-value');
+     }
 }

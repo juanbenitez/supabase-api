@@ -33,4 +33,15 @@ trait CanFilter
 
         return $this->where($column, $value, 'ilike');
     }
+
+    public function neq(string $column, $value)
+    {
+        $query = $this->where($column, $value)->getQuery($column);
+
+        $value = 'not.'.$query;
+
+        $this->addQuery($column, $value);
+
+        return $this;
+    }
 }
