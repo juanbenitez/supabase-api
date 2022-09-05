@@ -16,7 +16,7 @@ class RequestsLimitTest extends TestCase
         $queryParams = $this->readRows->getQuery();
 
         $this->assertArrayHasKey('limit', $queryParams);
-        $this->assertEquals($queryParams['limit'], 10);
+        $this->assertEquals(10, $queryParams['limit']);
     }
 
     /** @test */
@@ -28,7 +28,7 @@ class RequestsLimitTest extends TestCase
 
         $this->assertArrayHasKey('limit', $queryParams);
         $this->assertArrayHasKey('offset', $queryParams);
-        $this->assertEquals($queryParams['limit'], 100);
-        $this->assertEquals($queryParams['offset'], 20);
+        $this->assertEquals(100, $queryParams['limit']);
+        $this->assertEquals(20, $queryParams['offset']);
     }
 }

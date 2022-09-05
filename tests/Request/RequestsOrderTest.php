@@ -18,7 +18,7 @@ class RequestsOrderTest extends TestCase
         $queryParams = $this->readRows->getQuery();
 
         $this->assertArrayHasKey('order', $queryParams);
-        $this->assertEquals($queryParams['order'], 'field_1.asc');
+        $this->assertEquals('field_1.asc', $queryParams['order']);
     }
 
     /** @test */
@@ -32,7 +32,7 @@ class RequestsOrderTest extends TestCase
         $queryParams = $this->readRows->getQuery();
 
         $this->assertArrayHasKey('order', $queryParams);
-        $this->assertEquals($queryParams['order'], 'field_1.desc');
+        $this->assertEquals('field_1.desc', $queryParams['order']);
     }
 
     /** @test */
@@ -47,7 +47,7 @@ class RequestsOrderTest extends TestCase
         $queryParams = $this->readRows->getQuery();
 
         $this->assertArrayHasKey('order', $queryParams);
-        $this->assertEquals($queryParams['order'], 'field_1.desc.nullsfirst');
+        $this->assertEquals('field_1.desc.nullsfirst', $queryParams['order']);
     }
 
     /** @test */
@@ -82,6 +82,6 @@ class RequestsOrderTest extends TestCase
         $queryParams = $this->readRows->getQuery();
 
         $this->assertArrayHasKey('order', $queryParams);
-        $this->assertEquals($queryParams['order'], 'field_1.asc,field_2.desc,field_3.asc.nullslast');
+        $this->assertEquals('field_1.asc,field_2.desc,field_3.asc.nullslast', $queryParams['order']);
     }
 }

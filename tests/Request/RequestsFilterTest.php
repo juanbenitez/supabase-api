@@ -16,7 +16,7 @@ class RequestsFilterTest extends TestCase
         $queryParams = $this->readRows->getQuery();
 
         $this->assertArrayHasKey('field_1', $queryParams);
-        $this->assertEquals($queryParams['field_1'], 'eq.VALUE');
+        $this->assertEquals('eq.VALUE', $queryParams['field_1']);
     }
 
     /** @test */
@@ -31,7 +31,7 @@ class RequestsFilterTest extends TestCase
         $queryParams = $this->readRows->getQuery();
 
         $this->assertArrayHasKey('field_1', $queryParams);
-        $this->assertEquals($queryParams['field_1'], 'like.VALUE');
+        $this->assertEquals('like.VALUE', $queryParams['field_1']);
     }
 
     /** @test */
@@ -58,7 +58,7 @@ class RequestsFilterTest extends TestCase
         $queryParams = $this->readRows->getQuery();
 
         $this->assertArrayHasKey('field_1', $queryParams);
-        $this->assertEquals($queryParams['field_1'], 'eq.null');
+        $this->assertEquals('eq.null', $queryParams['field_1']);
     }
 
     /** @test */
@@ -72,7 +72,7 @@ class RequestsFilterTest extends TestCase
         $queryParams = $this->readRows->getQuery();
 
         $this->assertArrayHasKey('field_1', $queryParams);
-        $this->assertEquals($queryParams['field_1'], 'ilike.*my-value*');
+        $this->assertEquals('ilike.*my-value*', $queryParams['field_1']);
     }
 
      /** @test */
@@ -86,6 +86,20 @@ class RequestsFilterTest extends TestCase
          $queryParams = $this->readRows->getQuery();
 
          $this->assertArrayHasKey('field_1', $queryParams);
-         $this->assertEquals($queryParams['field_1'], 'not.eq.my-value');
+         $this->assertEquals('not.eq.my-value', $queryParams['field_1']);
      }
+
+     /** @test */
+     /* public function canCreateReadRowsRequestWithOrCondition()
+     {
+         $this->readRows->orWhere([
+            $this->readRows->where(column: 'field_1', value: 'my-value1')->getQuery('field_1'),
+            $this->readRows->where(column: 'field_2', value: 'my-value2')->getQuery('field_2'),
+         ]);
+
+         $queryParams = $this->readRows->getQuery();
+
+         $this->assertArrayHasKey('or', $queryParams);
+         $this->assertEquals('(field_1.eq.my-value1,field_2.eq.my-value2)', $queryParams['or']);
+     } */
 }

@@ -2,6 +2,8 @@
 
 namespace Juanbenitez\SupabaseApi\Trait;
 
+use Exception;
+
 trait CanFilter
 {
     protected $filtersAllowed = [
@@ -44,4 +46,14 @@ trait CanFilter
 
         return $this;
     }
+
+    /* public function orWhere(array $conditions)
+    {
+        if(count($conditions) <= 1){
+            throw new Exception('Must be at least 2 conditions.');
+        }        
+        $value = '(' .implode(',', $conditions) . ')'; 
+
+        $this->addQuery('or', $value);
+    } */
 }
