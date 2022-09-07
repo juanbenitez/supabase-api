@@ -2,58 +2,67 @@
 
 namespace Juanbenitez\SupabaseApi\Trait;
 
-use Exception;
+use Juanbenitez\SupabaseApi\Conditions\ConditionBase;
+use Juanbenitez\SupabaseApi\Conditions\Equals;
+use Juanbenitez\SupabaseApi\Conditions\Ilike;
+use Juanbenitez\SupabaseApi\Conditions\Like;
+use Juanbenitez\SupabaseApi\Conditions\NotEqual;
+use Juanbenitez\SupabaseApi\Conditions\OrWhere;
 
 trait CanFilter
 {
-    protected $filtersAllowed = [
-        'eq', 'neq', 'like', 'ilike',
-        'gt', 'gte', 'lt', 'lte', 'is', 'in',
-    ];
-
     public function where(
         string $column,
         $value,
-        string $operator = 'eq'
+        string $operator = Equals::EQUALS
     ): static {
-        if (! in_array($operator, $this->filtersAllowed)) {
-            throw new \Exception('Invalid operator in where clause.');
-        }
+        $this->addQuery($column, (new ConditionBase())->build($column, $value, $operator)->value);
 
-        if (is_null($value)) {
-            $value = 'null';
-        }
+        return $this;
+    }
 
-        $this->addQuery($column, implode('.', [$operator, $value]));
+    public function equals(
+        string $column,
+        $value
+    ): static {
+        $this->addQuery($column, Equals::make($column, $value)->value);
 
         return $this;
     }
 
     public function ilike(string $column, $value)
     {
-        $value = '*'.$value.'*';
+        return $this->like($column, $value, caseInsensitive: true);
+    }
 
-        return $this->where($column, $value, 'ilike');
+    public function like(string $column, $value, $caseInsensitive = false)
+    {
+        if ($caseInsensitive) {
+            return $this->addQuery($column, Ilike::make($column, $value, Ilike::ILIKE)->value);
+        }
+
+        return $this->addQuery($column, Like::make($column, $value, Like::LIKE)->value);
     }
 
     public function neq(string $column, $value)
     {
-        $query = $this->where($column, $value)->getQuery($column);
-
-        $value = 'not.'.$query;
-
-        $this->addQuery($column, $value);
+        $this->addQuery($column, NotEqual::make($column, $value)->value);
 
         return $this;
     }
 
-    /* public function orWhere(array $conditions)
+    public function orWhere(array $conditions)
     {
-        if(count($conditions) <= 1){
-            throw new Exception('Must be at least 2 conditions.');
-        }        
-        $value = '(' .implode(',', $conditions) . ')'; 
+        foreach ($conditions as $condition) {
+            $column = $condition[0];
+            $value = $condition[1];
+            $operator = $condition[2];
+            $newConditions[] = (new ConditionBase())->build($column, $value, $operator);
+        }
 
-        $this->addQuery('or', $value);
-    } */
+        $orCondition = OrWhere::make($newConditions);
+        $this->addQuery($orCondition->field, $orCondition->value);
+
+        return $this;
+    }
 }

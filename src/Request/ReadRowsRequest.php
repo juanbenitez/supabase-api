@@ -40,4 +40,9 @@ class ReadRowsRequest extends SupabaseRequest
 
         return $this;
     }
+
+    public function toArray()
+    {
+        return $this->getQuery();
+    }
 }

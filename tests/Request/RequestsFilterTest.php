@@ -9,9 +9,9 @@ use Juanbenitez\SupabaseApi\Tests\TestCase;
 class RequestsFilterTest extends TestCase
 {
     /** @test */
-    public function canCreateReadRowsRequestWithDefaultEqualFilter()
+    public function canCreateReadRowsRequestWithEqualFilter()
     {
-        $this->readRows->where(column: 'field_1', value: 'VALUE');
+        $this->readRows->equals(column: 'field_1', value: 'VALUE');
 
         $queryParams = $this->readRows->getQuery();
 
@@ -90,16 +90,33 @@ class RequestsFilterTest extends TestCase
      }
 
      /** @test */
-     /* public function canCreateReadRowsRequestWithOrCondition()
+     public function canCreateReadRowsRequestWithOrCondition()
      {
          $this->readRows->orWhere([
-            $this->readRows->where(column: 'field_1', value: 'my-value1')->getQuery('field_1'),
-            $this->readRows->where(column: 'field_2', value: 'my-value2')->getQuery('field_2'),
+            ['field_1', 'my-value_1', 'eq'],
+            ['field_2', 'my-value_2', 'eq'],
          ]);
 
          $queryParams = $this->readRows->getQuery();
 
          $this->assertArrayHasKey('or', $queryParams);
-         $this->assertEquals('(field_1.eq.my-value1,field_2.eq.my-value2)', $queryParams['or']);
-     } */
+         $this->assertEquals('(field_1.eq.my-value_1,field_2.eq.my-value_2)', $queryParams['or']);
+     }
+
+      /** @test */
+      public function canCreateReadRowsRequestMultipleConditions()
+      {
+          $this->readRows->orWhere([
+             ['field_1', 'my_value_1', 'eq'],
+             ['field_2', 'my_value_2', 'eq'],
+          ])
+          ->like('field_3', 'my_value_3');
+
+          $queryParams = $this->readRows->getQuery();
+
+          $this->assertArrayHasKey('or', $queryParams);
+          $this->assertArrayHasKey('field_3', $queryParams);
+          $this->assertEquals('(field_1.eq.my_value_1,field_2.eq.my_value_2)', $queryParams['or']);
+          $this->assertEquals('like.*my_value_3*', $queryParams['field_3']);
+      }
 }

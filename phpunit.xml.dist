@@ -21,8 +21,11 @@
     testdox="true"
 >
     <testsuites>
-        <testsuite name="Features">
-            <directory>tests</directory>
+        <testsuite name="Requests">
+            <directory>tests/Request</directory>
+        </testsuite>
+        <testsuite name="Conditions">
+            <directory>tests/Conditions</directory>
         </testsuite>
     </testsuites>
     <coverage>
